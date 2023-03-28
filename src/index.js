@@ -10,10 +10,7 @@ const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-searchBox.addEventListener(
-  'input',
-  debounce(onSearchBox, DEBOUNCE_DELAY)
-);
+searchBox.addEventListener('input', debounce(onSearchBox, DEBOUNCE_DELAY));
 
 function onSearchBox() {
   const name = searchBox.value.trim();
@@ -79,6 +76,8 @@ function renderCountryInfo(countries) {
 
 function alertWrongName() {
   Notiflix.Notify.failure('Oops, there is no country with that name');
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 }
 
 function alertTooManyMatches() {
